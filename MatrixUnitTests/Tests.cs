@@ -114,5 +114,31 @@ namespace MatrixUnitTests
             Assert.That(-1 * matrix_a.D, Is.EqualTo(reciprocal.D));
         }
 
+        [Test]
+        [TestCase(1, 2, 3, 4)]
+        [TestCase(-1, -2, 3, 4)]
+        public void Matrix_transpose(int x, int y, int z, int u)
+        {
+            var matrix_a = new Matrix2D(x, y, z, u);
+            var reciprocal = Matrix2D.Transpose(matrix_a);
+
+            Assert.That(matrix_a.A, Is.EqualTo(reciprocal.A));
+            Assert.That(matrix_a.B, Is.EqualTo(reciprocal.C));
+            Assert.That(matrix_a.C, Is.EqualTo(reciprocal.B));
+            Assert.That(matrix_a.D, Is.EqualTo(reciprocal.D));
+        }
+
+        [Test]
+        [TestCase(1, 2, 3, 4)]
+        [TestCase(-1, -2, 3, 4)]
+        public void Matrix_determinant(int x, int y, int z, int u)
+        {
+            var matrix_a = new Matrix2D(x, y, z, u);
+            var determinant = Matrix2D.Determinant(matrix_a);
+            Assert.That(determinant, Is.EqualTo((matrix_a.A * matrix_a.D) - (matrix_a.B * matrix_a.C)));
+
+        }
+
+
     }
 }

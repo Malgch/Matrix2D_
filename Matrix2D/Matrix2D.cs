@@ -76,6 +76,7 @@ namespace MatrixLib
         }
         #endregion
 
+        #region mnozenie
         public static Matrix2D operator *(int k, Matrix2D b)
         {
             var scalar_multiply = new Matrix2D(k * b.A, k * b.B, k * b.C, k * b.D);
@@ -87,11 +88,36 @@ namespace MatrixLib
             var scalar_multiply = new Matrix2D(b.A * k, b.B * k, b.C * k, b.D * k);
             return scalar_multiply;
         }
+        #endregion
 
         public static Matrix2D operator -(Matrix2D a)
         {
             var reciprocal = new Matrix2D(-a.A, -a.B, -a.C, -a.D);
             return reciprocal;
+        }
+
+        public static Matrix2D Transpose(Matrix2D a)
+        {
+            var transposed = new Matrix2D(a.A, a.C, a.B, a.D);
+            return transposed;
+        }
+
+        public static int Determinant(Matrix2D a)
+        {
+            int determinant = a.A*a.D - a.B*a.C;
+            return determinant;
+        }
+
+        public int Det(Matrix2D a)
+        {
+            int det = Determinant(a);
+            return det;
+        }
+
+        public static int[,] Projection(Matrix2D a)
+        {
+            int[,] proj = { { a.A, a.B }, { a.C, a.D } };
+            return proj;
         }
     }
 }
