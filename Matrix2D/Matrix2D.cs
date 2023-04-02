@@ -60,17 +60,38 @@ namespace MatrixLib
         }
         public static bool operator !=(Matrix2D? left, Matrix2D? right) => !(left == right);
 
+        #region dodwanie
+        public static Matrix2D operator +(Matrix2D a, Matrix2D b)
+        {
+            var suma = new Matrix2D(a.A + b.A, a.B + b.B, a.C + b.C, a.D + b.D);
+            return suma;
+        }
+        #endregion
 
+        #region odejmowanie
+        public static Matrix2D operator -(Matrix2D a, Matrix2D b)
+        {
+            var substract = new Matrix2D(a.A - b.A, a.B - b.B, a.C - b.C, a.D - b.D);
+            return substract;
+        }
+        #endregion
 
+        public static Matrix2D operator *(int k, Matrix2D b)
+        {
+            var scalar_multiply = new Matrix2D(k * b.A, k * b.B, k * b.C, k * b.D);
+            return scalar_multiply;
+        }
 
-        /*        #region dodwanie
-                //dodwanie
-                public static Matrix2D operator +(Matrix2D a, Matrix2D b)
-                {
-                    int Sum(a.A, b.A);
-                    return a;
-                }
+        public static Matrix2D operator *(Matrix2D b, int k)
+        {
+            var scalar_multiply = new Matrix2D(b.A * k, b.B * k, b.C * k, b.D * k);
+            return scalar_multiply;
+        }
 
-                #endregion*/
+        public static Matrix2D operator -(Matrix2D a)
+        {
+            var reciprocal = new Matrix2D(-a.A, -a.B, -a.C, -a.D);
+            return reciprocal;
+        }
     }
 }

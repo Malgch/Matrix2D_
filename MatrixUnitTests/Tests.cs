@@ -56,5 +56,63 @@ namespace MatrixUnitTests
         }
 
 
+        [Test]
+        [TestCase(1,2,3, 4, 5, 6, 7, 8)]
+        [TestCase(-1, -2, 3, 4, 5, 6, 7, 8)]
+        public void Sum_matrixes(int x, int y, int z, int u, int a, int b, int c, int d)
+        {
+            var matrix_a = new Matrix2D(x, y, z, u);
+            var matrix_b = new Matrix2D(a, b, c, d);
+            var suma = matrix_a + matrix_b;
+
+            Assert.That(x+a, Is.EqualTo(suma.A));
+            Assert.That(y + b, Is.EqualTo(suma.B));
+            Assert.That(z + c, Is.EqualTo(suma.C));
+            Assert.That(u + d, Is.EqualTo(suma.D));
+        }
+
+        [Test]
+        [TestCase(1, 2, 3, 4, 5, 6, 7, 8)]
+        [TestCase(-1, -2, 3, 4, 5, 6, 7, 8)]
+        public void Substract_matrixes(int x, int y, int z, int u, int a, int b, int c, int d)
+        {
+            var matrix_a = new Matrix2D(x, y, z, u);
+            var matrix_b = new Matrix2D(a, b, c, d);
+            var suma = matrix_a - matrix_b;
+
+            Assert.That(x - a, Is.EqualTo(suma.A));
+            Assert.That(y - b, Is.EqualTo(suma.B));
+            Assert.That(z - c, Is.EqualTo(suma.C));
+            Assert.That(u - d, Is.EqualTo(suma.D));
+        }
+
+        [Test]
+        [TestCase(1, 2, 3, 4, 5)]
+        [TestCase(-1, -2, 3, 4, 5)]
+        public void Scalar_multiplication(int x, int y, int z, int u, int a)
+        {
+            var matrix_a = new Matrix2D(x, y, z, u);
+            var multiplication = a * matrix_a;
+
+            Assert.That(a * matrix_a.A, Is.EqualTo(multiplication.A));
+            Assert.That(a * matrix_a.B, Is.EqualTo(multiplication.B));
+            Assert.That(a * matrix_a.C, Is.EqualTo(multiplication.C));
+            Assert.That(a * matrix_a.D, Is.EqualTo(multiplication.D));
+        }
+
+        [Test]
+        [TestCase(1, 2, 3, 4)]
+        [TestCase(-1, -2, 3, 4)]
+        public void Matrix_reciprocal(int x, int y, int z, int u)
+        {
+            var matrix_a = new Matrix2D(x, y, z, u);
+            var reciprocal = -matrix_a;
+
+            Assert.That(-1 * matrix_a.A, Is.EqualTo(reciprocal.A));
+            Assert.That(-1 * matrix_a.B, Is.EqualTo(reciprocal.B));
+            Assert.That(-1 * matrix_a.C, Is.EqualTo(reciprocal.C));
+            Assert.That(-1 * matrix_a.D, Is.EqualTo(reciprocal.D));
+        }
+
     }
 }
